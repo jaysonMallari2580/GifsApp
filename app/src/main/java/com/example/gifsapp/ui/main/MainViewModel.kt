@@ -13,6 +13,9 @@ import kotlinx.coroutines.*
 
 class MainViewModel : ViewModel() {
 
+    var _currentImageUrl = MutableLiveData<String>()
+    val currenImageUrl get() =_currentImageUrl
+
     private val giphyRepo : GiphyRepo by lazy {
         GiphyRepo()
     }

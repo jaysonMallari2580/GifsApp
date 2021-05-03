@@ -9,9 +9,15 @@
         android:id="@+id/destination_main_fragment"
         android:name="com.example.gifsapp.ui.main.MainFragment"
         tools:layout="@layout/main_fragment">
+
         <action
-            android:id="@+id/main_fragment_to_fragment_gif_page"
-            app:destination="@+id/destination_fragment_gif_page" />
+            android:id="@+id/action_destination_main_fragment_to_destination_fragment_gif_page"
+            app:destination="@id/destination_fragment_gif_page" >
+            <argument
+                android:name="url"
+                android:defaultValue=""
+                app:argType="string"/>
+        </action>
     </fragment>
 
 
@@ -19,6 +25,12 @@
         android:id="@+id/destination_fragment_gif_page"
         android:name="com.example.gifsapp.ui.main.GifPageFragment"
         tools:layout="@layout/fragment_gif_page">
+
+        <argument
+            android:name="url"
+            android:defaultValue=""
+            app:argType="string"/>
+
         <action
             android:id="@+id/action_fragment_gif_page_pop"
             app:popUpTo="@id/destination_main_fragment"

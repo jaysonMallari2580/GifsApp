@@ -13,7 +13,7 @@ class GiphyManager {
 
     companion object{
         private val key ="kAhX2Y0GPpK9igTCBavMtyPxICyBdiJE"
-        private val limit = "50"
+        private val limit = "25"
         private val rating ="g"
     }
 
@@ -37,7 +37,7 @@ class GiphyManager {
         suspend fun getSearchGiphy(
             @Query("q")q:String,
             @Query("api_key")key:String =GiphyManager.key,
-            @Query("limit")limit:String ="200",
+            @Query("limit")limit:String ="25",
             @Query("offset")offset:String = "0",
             @Query("rating")rating:String = GiphyManager.rating,
             @Query("lang")lang:String = "en"

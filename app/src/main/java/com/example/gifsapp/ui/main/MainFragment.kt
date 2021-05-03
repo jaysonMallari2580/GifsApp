@@ -42,8 +42,9 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         // TODO: Use the ViewModel
 
+
         //autoComplete Search
-        binding.searchAutocomple.addTextChangedListener(object: TextWatcher {
+        binding.searchAutocomplete.addTextChangedListener(object: TextWatcher {
             override fun afterTextChanged(s: Editable) {}
 
             override fun beforeTextChanged(s: CharSequence, start: Int,
@@ -56,23 +57,16 @@ class MainFragment : Fragment() {
             }
         })
 
-        viewModel.searchList.observe(this, Observer {
+        viewModel.searchList.observe(viewLifecycleOwner, Observer {
 
             it.forEach{
                 listOfSearch.add(it.title)
             }
 
-            val adapter = ArrayAdapter(this, R.layout.simple_list_item_1,listOfSearch)
-            binding.searchAutocomple.setAdapter(adapter)
+            val adapter = ArrayAdapter(requireContext(),android.R.layout.simple_list_item_1,listOfSearch)
+            binding.searchAutocomplete.setAdapter(adapter)
         })
 
-
-        //Fragment call
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(com.example.gifsapp.R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
 
         //top-image
         val url = "https://media2.giphy.com/headers/IntoAction/BM0R9Sycv4uM.gif"
